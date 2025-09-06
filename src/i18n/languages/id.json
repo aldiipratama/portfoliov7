@@ -1,0 +1,160 @@
+{
+  "page": {
+    "homePage": {
+      "greeting": "Hai, saya Rinaldi",
+      "title": "Pengembang Frontend",
+      "askLabel": "Tanya apa saja",
+      "starButton": "Beri Bintang",
+      "quickMenu": "Menu Cepat"
+    },
+    "chatPage": {
+      "headerTitle": "Muhamad Rinaldi",
+      "headerSubtitle": "Agus Pratama",
+      "greeting": "Tanya apa saja tentang saya.",
+      "starButton": "Beri Bintang",
+      "inputPrompt": "Ketik pesan Anda di sini..."
+    }
+  },
+  "etc": {
+    "lookingForTalent": {
+      "title": "Mencari Talenta?",
+      "status": "Siap Direkrut",
+      "duration": "Durasi",
+      "durationValue": "Oktober 2022 - Sekarang",
+      "institute": "Institusi",
+      "instituteValue": "Universitas Pasundan",
+      "location": "Lokasi",
+      "locationValue": "Bandung, Indonesia",
+      "major": "Jurusan",
+      "majorValue": "Teknik Informatika",
+      "whyMajorTitle": "Kenapa memilih jurusan ini?",
+      "whyMajorDesc": "Awalnya saya hanya suka utak-atik komputer, tapi akhirnya benar-benar menikmati dunia pemrograman. Saya memilih Teknik Informatika agar bisa ngoding sambil santai, eksplorasi teknologi terbaru, dan mungkin membangun startup sendiri suatu hari nanti. Saya ingin menjadi bagian dari transformasi digital yang relevan dengan kehidupan sehari-hari.",
+      "goalTitle": "Tujuan",
+      "goalDesc": "Tujuan saya adalah menjadi insinyur perangkat lunak yang terampil dan berkontribusi pada proyek inovatif yang berdampak bagi kehidupan banyak orang. Saya ingin terus belajar dan berkembang di bidang ini, serta nantinya mengambil peran kepemimpinan untuk membimbing orang lain dan mendorong perubahan positif.",
+      "contactButton": "Hubungi Saya",
+      "studentDegree": "Mahasiswa Sarjana",
+      "name": "Rinaldi",
+      "role": "Pengembang Frontend"
+    },
+    "quickMenu": {
+      "AboutMe": "Tentang Saya",
+      "Projects": "Proyek",
+      "Skills": "Keahlian",
+      "Fun": "Keseruan",
+      "Contact": "Kontak",
+      "Testy": "Testimoni"
+    },
+    "moreMenu": {
+      "Me": {
+        "Label": "Saya",
+        "WhoAreYou": "Siapa kamu?",
+        "WhatAreYourPassions": "Apa passion kamu?",
+        "HowDidYouGetStartedInTech": "Bagaimana kamu memulai di dunia teknologi?",
+        "WhereDoYouSeeYourselfIn5Years": "Di mana kamu melihat dirimu dalam 5 tahun?"
+      },
+      "Projects": {
+        "Label": "Proyek",
+        "WhatProjectsAreYouMostProudOf": "Proyek apa yang paling kamu banggakan?",
+        "WhatIsYourFavoriteProject": "Apa proyek favorit kamu?",
+        "WhatIsYourMostChallengingProject": "Apa proyek paling menantang yang pernah kamu kerjakan?",
+        "WhatIsYourFavoriteTechnologyStack": "Apa tumpukan teknologi favorit kamu?"
+      },
+      "Skills": {
+        "Label": "Keahlian",
+        "WhatAreYourSkills": "Apa keahlian kamu?",
+        "HowWasYourExperienceAtBandung": "Bagaimana pengalaman kamu di Bandung?",
+        "WhatIsYourFavoriteProgrammingLanguage": "Apa bahasa pemrograman favorit kamu?",
+        "WhatIsYourFavoriteFramework": "Apa framework favorit kamu?"
+      },
+      "Professional": {
+        "Label": "Profesional",
+        "CanISeeYourResume": "Bolehkah saya melihat resume kamu?",
+        "WhatMakesYouAValuableTeamMember": "Apa yang membuat kamu menjadi anggota tim yang berharga?",
+        "WhatAreYouWorkingOnNow": "Apa yang sedang kamu kerjakan sekarang?",
+        "WhyShouldIHireYou": "Mengapa saya harus merekrut kamu?",
+        "WhatYourEducationBackground": "Apa latar belakang pendidikan kamu?"
+      },
+      "FunFact": {
+        "Label": "Fakta Menarik",
+        "WhatAreYourHobbies": "Apa hobi kamu?",
+        "WhatIsYourFavoriteWayToHaveFun": "Apa cara favorit kamu untuk bersenang-senang?",
+        "WhatHobbiesDoYouEnjoy": "Hobi apa yang kamu nikmati?",
+        "MacOrPC": "Mac atau PC?"
+      },
+      "Contact": {
+        "Label": "Kontak",
+        "HowCanIReachYou": "Bagaimana saya bisa menghubungi kamu?",
+        "WhatKindOfProjectWouldMakeYouSay\"Yes\"Immediately": "Proyek seperti apa yang akan membuat kamu langsung berkata \"ya\"?",
+        "WhereAreYouLocated": "Di mana kamu berada?"
+      },
+      "Testimonials": {
+        "Label": "Testimoni",
+        "WhatDoOthersSayAboutYou": "Apa kata orang lain tentang kamu?",
+        "CanYouProvideReferences": "Bisakah kamu memberikan referensi?",
+        "WhatAreYourStrengths": "Apa kekuatan kamu?",
+        "WhatAreYourWeaknesses": "Apa kelemahan kamu?"
+      }
+    },
+    "reasoning": {
+      "thinking": "Berpikir...",
+      "collectingData": "Saya sedang mengumpulkan data...",
+      "analyzingProfile": "Menganalisis profil dan pengalaman...",
+      "generatingResponse": "Menyusun jawaban terbaik untuk Anda...",
+      "waitingForInput": "Menunggu pertanyaan atau instruksi...",
+      "fetchingProjects": "Mengambil data proyek terbaru...",
+      "fetchingSkills": "Mengambil data keahlian...",
+      "fetchingTestimonials": "Mengambil testimoni dari rekan kerja..."
+    },
+    "projects-card": {
+      "viewProject": "Lihat Proyek",
+      "viewCode": "Lihat Kode"
+    },
+    "testimonials": {
+      "form": {
+        "name": "Nama Lengkap",
+        "namePlaceholder": "Masukkan nama lengkap Anda",
+        "testimonial": "Testimonial",
+        "testimonialPlaceholder": "Bagikan pengalaman Anda bekerja dengan saya...",
+        "position": "Posisi/Jabatan (Opsional)",
+        "positionPlaceholder": "Contoh: Frontend Developer",
+        "company": "Perusahaan (Opsional)",
+        "companyPlaceholder": "Contoh: PT. Teknologi Indonesia",
+        "rating": "Rating",
+        "ratingPlaceholder": "Berikan rating 1-5",
+        "submitButton": "Kirim Testimonial",
+        "loadingButton": "Mengirim...",
+        "cancelButton": "Batal",
+        "dialogTitle": "Kirim Testimonial Baru"
+      },
+      "messages": {
+        "success": "Terima kasih! Testimonial Anda berhasil dikirim dan sedang menunggu persetujuan.",
+        "firstTestimonialSuccess": "Selamat! Ini adalah testimonial pertama yang diterima!",
+        "error": "Gagal mengirim testimonial. Silakan coba lagi.",
+        "networkError": "Terjadi kesalahan. Silakan coba lagi.",
+        "validation": {
+          "nameRequired": "Nama wajib diisi",
+          "nameMinLength": "Nama minimal 2 karakter",
+          "testimonialRequired": "Testimonial wajib diisi",
+          "testimonialMinLength": "Testimonial minimal 10 karakter",
+          "ratingRequired": "Rating wajib dipilih",
+          "ratingRange": "Rating harus antara 1-5"
+        }
+      },
+      "display": {
+        "emptyState": "Belum ada testimonial",
+        "emptyStateDesc": "Jadilah yang pertama memberikan testimonial dan bantu orang lain mengetahui pengalaman bekerja sama dengan saya.",
+        "loadMore": "Muat Lebih Banyak",
+        "showLess": "Tampilkan Lebih Sedikit",
+        "writeFirstTestimonial": "Tulis Testimonial Pertama",
+        "writeTestimonial": "Tulis Testimonial"
+      }
+    },
+    "tools": {
+      "thankYouMessage": {
+        "description": "Buat pesan terima kasih ketika user mengirimkan testimonial",
+        "firstTimeContext": "testimonial pertama untuk portfolio",
+        "returningContext": "testimonial tambahan untuk portfolio"
+      }
+    }
+  }
+}

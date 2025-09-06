@@ -1,0 +1,160 @@
+{
+  "page": {
+    "homePage": {
+      "greeting": "Hi I'm Rinaldi",
+      "title": "Frontend Developer",
+      "askLabel": "Ask me anything",
+      "starButton": "Give a Star",
+      "quickMenu": "Quick Menu"
+    },
+    "chatPage": {
+      "headerTitle": "Muhamad Rinaldi",
+      "headerSubtitle": "Agus Pratama",
+      "greeting": "Tanya apa saja tentang saya.",
+      "starButton": "Give a Star",
+      "inputPrompt": "Type your message here..."
+    }
+  },
+  "etc": {
+    "lookingForTalent": {
+      "title": "Looking for Talent?",
+      "status": "Ready for Hire",
+      "duration": "Duration",
+      "durationValue": "October 2022 - Current",
+      "institute": "Institute",
+      "instituteValue": "Universitas Pasundan",
+      "location": "Location",
+      "locationValue": "Bandung, Indonesia",
+      "major": "Major",
+      "majorValue": "Informatics Engineering",
+      "whyMajorTitle": "Why did I choose this major?",
+      "whyMajorDesc": "At first, I was just tinkering with computers, but I ended up really enjoying the world of coding. I chose Informatics Engineering so I can code while relaxing, explore the latest technologies, and maybe even build my own startup someday. I want to be part of the exciting digital transformation that’s relevant to everyday life.",
+      "goalTitle": "Goal",
+      "goalDesc": "My goal is to become a skilled software engineer and contribute to innovative projects that make a difference in people's lives. I want to continuously learn and grow in my field, and eventually take on leadership roles where I can mentor others and drive positive change.",
+      "contactButton": "Contact Me",
+      "studentDegree": "Student of Bachelor Degree",
+      "name": "Rinaldi",
+      "role": "Frontend Developer"
+    },
+    "quickMenu": {
+      "AboutMe": "About Me",
+      "Projects": "Projects",
+      "Skills": "Skills",
+      "Fun": "Fun",
+      "Contact": "Contact",
+      "Testy": "Testy"
+    },
+    "moreMenu": {
+      "Me": {
+        "Label": "Me",
+        "WhoAreYou": "Who Are You?",
+        "WhatAreYourPassions": "What are your passions?",
+        "HowDidYouGetStartedInTech": "How did you get started in tech?",
+        "WhereDoYouSeeYourselfIn5Years": "Where do you see yourself in 5 years?"
+      },
+      "Projects": {
+        "Label": "Projects",
+        "WhatProjectsAreYouMostProudOf": "What projects are you most proud off?",
+        "WhatIsYourFavoriteProject": "What is your favorite project?",
+        "WhatIsYourMostChallengingProject": "What is your most challenging project?",
+        "WhatIsYourFavoriteTechnologyStack": "What is your favorite technology stack?"
+      },
+      "Skills": {
+        "Label": "Skills",
+        "WhatAreYourSkills": "What's are your skills?",
+        "HowWasYourExperienceAtBandung": "How was your experience at Bandung?",
+        "WhatIsYourFavoriteProgrammingLanguage": "What is your favorite programming language?",
+        "WhatIsYourFavoriteFramework": "What is your favorite framework?"
+      },
+      "Professional": {
+        "Label": "Professional",
+        "CanISeeYourResume": "Can I see your resume?",
+        "WhatMakesYouAValuableTeamMember": "What makes you a valuable team member?",
+        "WhatAreYouWorkingOnNow": "What are you working on now?",
+        "WhyShouldIHireYou": "Why should I hire you?",
+        "WhatYourEducationBackground": "What your education background?"
+      },
+      "FunFact": {
+        "Label": "Fun",
+        "WhatAreYourHobbies": "What's your hobbies?",
+        "WhatIsYourFavoriteWayToHaveFun": "What's your favorite way to have fun?",
+        "WhatHobbiesDoYouEnjoy": "What hobbies do you enjoy?",
+        "MacOrPC": "Mac or PC?"
+      },
+      "Contact": {
+        "Label": "Contact",
+        "HowCanIReachYou": "How can I reach you?",
+        "WhatKindOfProjectWouldMakeYouSay\"Yes\"Immediately": "What kind of project would make you say \"yes\" immediately?",
+        "WhereAreYouLocated": "Where are you located?"
+      },
+      "Testimonials": {
+        "Label": "Testimonials",
+        "WhatDoOthersSayAboutYou": "What do others say about you?",
+        "CanYouProvideReferences": "Can you provide references?",
+        "WhatAreYourStrengths": "What are your strengths?",
+        "WhatAreYourWeaknesses": "What are your weaknesses?"
+      }
+    },
+    "reasoning": {
+      "thinking": "Thinking...",
+      "collectingData": "Collecting data...",
+      "analyzingProfile": "Analyzing profile and experience...",
+      "generatingResponse": "Generating the best response for you...",
+      "waitingForInput": "Waiting for your question or instruction...",
+      "fetchingProjects": "Fetching latest project data...",
+      "fetchingSkills": "Fetching skills data...",
+      "fetchingTestimonials": "Fetching testimonials from colleagues..."
+    },
+    "projects-card": {
+      "viewProject": "View Project",
+      "viewCode": "View Code"
+    },
+    "testimonials": {
+      "form": {
+        "name": "Full Name",
+        "namePlaceholder": "Enter your full name",
+        "testimonial": "Testimonial",
+        "testimonialPlaceholder": "Share your experience working with me...",
+        "position": "Position/Title (Optional)",
+        "positionPlaceholder": "e.g. Frontend Developer",
+        "company": "Company (Optional)",
+        "companyPlaceholder": "e.g. PT. Teknologi Indonesia",
+        "rating": "Rating",
+        "ratingPlaceholder": "Give rating 1-5",
+        "submitButton": "Submit Testimonial",
+        "loadingButton": "Submitting...",
+        "cancelButton": "Cancel",
+        "dialogTitle": "Submit New Testimonial"
+      },
+      "messages": {
+        "success": "Thank you! Your testimonial has been submitted and is pending approval.",
+        "firstTestimonialSuccess": "Congratulations! This is the first testimonial received!",
+        "error": "Failed to submit testimonial. Please try again.",
+        "networkError": "An error occurred. Please try again.",
+        "validation": {
+          "nameRequired": "Name is required",
+          "nameMinLength": "Name must be at least 2 characters",
+          "testimonialRequired": "Testimonial is required",
+          "testimonialMinLength": "Testimonial must be at least 10 characters",
+          "ratingRequired": "Rating is required",
+          "ratingRange": "Rating must be between 1-5"
+        }
+      },
+      "display": {
+        "emptyState": "No testimonials yet",
+        "emptyStateDesc": "Be the first to give a testimonial and help others know the experience of working with me.",
+        "loadMore": "Load More",
+        "showLess": "Show Less",
+        "writeFirstTestimonial": "Write First Testimonial",
+        "writeTestimonial": "Write Testimonial"
+      }
+    },
+    "tools": {
+      "thankYouMessage": {
+        "description": "Generate thank you message when user submits testimonial",
+        "firstTimeContext": "first testimonial for portfolio",
+        "returningContext": "additional testimonial for portfolio"
+      }
+    }
+  }
+}
