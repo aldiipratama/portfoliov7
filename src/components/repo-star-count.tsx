@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { NumberTicker } from "./magicui/number-ticker";
+import { GitHubService } from "@/services";
 
 interface RepoStarCountProps {
   owner: string;
@@ -11,11 +13,24 @@ export const RepoStarCount = ({ owner, repo }: RepoStarCountProps) => {
   const [stars, setStars] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch(`https://api.github.com/repos/${owner}/${repo}`)
-      .then((res) => res.json())
-      .then((data) => setStars(data.stargazers_count))
-      .catch(() => setStars(null));
+    // Pake service layer yang udah ada, lebih clean kan?
+    const fetchStars = async () => {
+      try {
+        const starCount = await GitHubService.getRepoStars(owner, repo);
+        setStars(starCount);
+      } catch (error) {
+        console.error("Gagal ambil star count:", error);
+        setStars(0); // Fallback ke 0 biar gak error
+      }
+    };
+
+    fetchStars();
   }, [owner, repo]);
 
-  return <span className="text-sm">{stars && stars > 0 ? stars : 0}</span>;
+  return (
+    <NumberTicker
+      value={stars || 0}
+      className="whitespace-pre-wrap text-sm font-medium tracking-tighter text-background"
+    />
+  );
 };
