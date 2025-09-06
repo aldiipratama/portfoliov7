@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ===============================
+// TESTIMONIALS
+// ===============================
+model Testimonial {
+  id                String   @id @default(cuid())
+  authorName        String   @map("author_name")
+  authorTestimonial String   @map("author_testimonial")
+  authorPosition    String?  @map("author_position")
+  authorCompany     String?  @map("author_company")
+  authorRating      Int      @map("author_rating") @db.SmallInt
+  authorAvatar      String?  @map("author_avatar")
+  authorInstagram   String?  @map("author_instagram")
+  authorLinkedin    String?  @map("author_linkedin")
+  authorGithub      String?  @map("author_github")
+  authorWebsite     String?  @map("author_website")
+  isApproved        Boolean  @default(false) @map("is_approved")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  @@map("testimonials")
+}
+
+// ===============================
+// CHAT CONVERSATIONS
+// ===============================
+model ChatConversation {
+  id          String   @id @default(cuid())
+  sessionId   String   @map("session_id")
+  userMessage String   @map("user_message")
+  aiResponse  String   @map("ai_response")
+  toolsUsed   Json?    @map("tools_used")
+  userLocale  String   @default("id") @map("user_locale")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([sessionId])
+  @@index([createdAt])
+  @@map("chat_conversations")
+}
+
+// ===============================
+// ANALYTICS
+// ===============================
+model Analytics {
+  id        String   @id @default(cuid())
+  eventType String   @map("event_type")
+  eventData Json?    @map("event_data")
+  userAgent String?  @map("user_agent")
+  ipAddress String?  @map("ip_address")
+  sessionId String?  @map("session_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([eventType])
+  @@index([createdAt])
+  @@index([sessionId])
+  @@map("analytics")
+}
+
+// ===============================
+// CONTACT SUBMISSIONS
+// ===============================
+model ContactSubmission {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  subject       String?
+  message       String
+  contactMethod String?  @map("contact_method")
+  status        String   @default("unread")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_submissions")
+}
+
+// ===============================
+// PORTFOLIO SETTINGS
+// ===============================
+model PortfolioSetting {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       Json
+  description String?
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("portfolio_settings")
+}
