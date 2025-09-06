@@ -1,0 +1,26 @@
+{
+  "opening": "",
+  "contact": [
+    {
+      "icon": "icon-[logos--google-gmail]",
+      "title": "Email",
+      "link": "mailto:paldi0013@gmail.com"
+    },
+    {
+      "icon": "icon-[devicon--linkedin]",
+      "title": "LinkedIn",
+      "link": "https://linkedin.com/in/muhamad-rinaldi-agus-pratama-a21b61295"
+    },
+    {
+      "icon": "icon-[devicon--github]",
+      "title": "GitHub",
+      "link": "https://github.com/aldiipratama"
+    },
+    {
+      "icon": "icon-[skill-icons--instagram]",
+      "title": "Instagram",
+      "link": "https://instagram.com/alx.dyy"
+    }
+  ],
+  "closing": ""
+}

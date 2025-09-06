@@ -1,0 +1,41 @@
+{
+  "opening": "",
+  "technicalSkills": [
+    { "title": "JavaScript", "icon": "icon-[devicon--javascript]" },
+    { "title": "TypeScript", "icon": "icon-[devicon--typescript]" },
+    { "title": "React", "icon": "icon-[devicon--react]" },
+    { "title": "Next.js", "icon": "icon-[devicon--nextjs]" },
+    { "title": "Node.js", "icon": "icon-[devicon--nodejs-wordmark]" },
+    { "title": "Vite", "icon": "icon-[devicon--vite]" },
+    { "title": "HTML", "icon": "icon-[devicon--html5]" },
+    { "title": "CSS", "icon": "icon-[devicon--css3]" },
+    { "title": "TailwindCSS", "icon": "icon-[devicon--tailwindcss]" },
+    { "title": "Git", "icon": "icon-[devicon--git]" },
+    { "title": "Figma", "icon": "icon-[devicon--figma]" },
+    { "title": "Canva", "icon": "icon-[devicon--canva]" },
+    { "title": "PHP", "icon": "icon-[devicon--php]" },
+    { "title": "Laravel", "icon": "icon-[devicon--laravel]" },
+    { "title": "MySql", "icon": "icon-[devicon--mysql]" },
+    { "title": "PostgreSQL", "icon": "icon-[devicon--postgresql]" },
+    { "title": "Supabase", "icon": "icon-[devicon--supabase]" },
+    { "title": "Flutter", "icon": "icon-[devicon--flutter]" },
+    { "title": "Dart", "icon": "icon-[devicon--dart]" },
+    { "title": "GROQ API" },
+    { "title": "AI-SDK" }
+  ],
+  "softSkills": [
+    {
+      "title": "Problem Solving",
+      "icon": "icon-[icon-park-outline--thinking-problem]"
+    },
+    {
+      "title": "Communication",
+      "icon": "icon-[material-symbols--communication]"
+    },
+    {
+      "title": "Teamwork",
+      "icon": "icon-[streamline-ultimate--workflow-teamwork-fistbump-2]"
+    }
+  ],
+  "closing": ""
+}

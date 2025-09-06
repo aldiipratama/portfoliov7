@@ -1,196 +1,223 @@
-export type MoreMenuItem = {
-  label: string;
-  icon: string;
-  subMenu: MoreMenuSubItem[];
-};
+type TFunction = (key: string) => string;
 
-export type MoreMenuSubItem = {
-  label: string;
-  link: string;
-  active: boolean;
-};
-
-export const moreMenuList: MoreMenuItem[] = [
+export const getMoreMenuList = (t: TFunction) => [
   {
-    label: "Me",
+    label: t("etc.moreMenu.Me.Label"),
     icon: "icon-[mdi--user-search-outline]",
     subMenu: [
       {
-        label: "Who Are You?",
-        link: "/chat?question=who-are-you",
+        label: t("etc.moreMenu.Me.WhoAreYou"),
+        link: t("etc.moreMenu.Me.WhoAreYou"),
         active: true,
       },
       {
-        label: "What are your passions?",
-        link: "/chat?question=what-are-your-passions",
+        label: t("etc.moreMenu.Me.WhatAreYourPassions"),
+        link: t("etc.moreMenu.Me.WhatAreYourPassions"),
         active: false,
       },
       {
-        label: "How did you get started in tech?",
-        link: "/chat?question=how-did-you-get-started-in-tech",
+        label: t("etc.moreMenu.Me.HowDidYouGetStartedInTech"),
+        link: t("etc.moreMenu.Me.HowDidYouGetStartedInTech"),
         active: false,
       },
       {
-        label: "Where do you see yourself in 5 years?",
-        link: "/chat?question=where-do-you-see-yourself-in-5-years",
+        label: t("etc.moreMenu.Me.WhereDoYouSeeYourselfIn5Years"),
+        link: t("etc.moreMenu.Me.WhereDoYouSeeYourselfIn5Years"),
         active: false,
       },
     ],
   },
   {
-    label: "Professional",
+    label: t("etc.moreMenu.Professional.Label"),
     icon: "icon-[flowbite--briefcase-outline]",
     subMenu: [
       {
-        label: "Can I see your resume?",
+        label: t("etc.moreMenu.Professional.CanISeeYourResume"),
+        link: t("etc.moreMenu.Professional.CanISeeYourResume"),
         active: true,
-        link: "/chat?question=can-i-see-your-resume",
       },
       {
-        label: "What makes you a valuable team member?",
+        label: t("etc.moreMenu.Professional.WhatMakesYouAValuableTeamMember"),
+        link: t("etc.moreMenu.Professional.WhatMakesYouAValuableTeamMember"),
         active: false,
-        link: "/chat?question=what-makes-you-a-valuable-team-member",
       },
       {
-        label: "What are you working on now?",
+        label: t("etc.moreMenu.Professional.WhatAreYouWorkingOnNow"),
+        link: t("etc.moreMenu.Professional.WhatAreYouWorkingOnNow"),
         active: false,
-        link: "/chat?question=what-are-you-working-on-now",
       },
       {
-        label: "Why should I hire you?",
+        label: t("etc.moreMenu.Professional.WhyShouldIHireYou"),
+        link: t("etc.moreMenu.Professional.WhyShouldIHireYou"),
         active: false,
-        link: "/chat?question=why-should-i-hire-you",
       },
       {
-        label: "What your education background?",
+        label: t("etc.moreMenu.Professional.WhatYourEducationBackground"),
+        link: t("etc.moreMenu.Professional.WhatYourEducationBackground"),
         active: false,
-        link: "/chat?question=what-your-education-background",
       },
     ],
   },
   {
-    label: "Projects",
-    icon: "icon-[mdi--code]",
+    label: t("etc.moreMenu.Projects.Label"),
+    icon: "icon-[mdi--folder-star-outline]",
     subMenu: [
       {
-        label: "What projects are you most proud off?",
+        label: t("etc.moreMenu.Projects.WhatProjectsAreYouMostProudOf"),
+        link: t("etc.moreMenu.Projects.WhatProjectsAreYouMostProudOf"),
         active: true,
-        link: "/chat?question=what-projects-are-you-most-proud-off",
       },
       {
-        label: "What is your favorite project?",
+        label: t("etc.moreMenu.Projects.WhatIsYourFavoriteProject"),
+        link: t("etc.moreMenu.Projects.WhatIsYourFavoriteProject"),
         active: false,
-        link: "/chat?question=what-is-your-favorite-project",
       },
       {
-        label: "What is your most challenging project?",
+        label: t("etc.moreMenu.Projects.WhatIsYourMostChallengingProject"),
+        link: t("etc.moreMenu.Projects.WhatIsYourMostChallengingProject"),
         active: false,
-        link: "/chat?question=what-is-your-most-challenging-project",
       },
       {
-        label: "What is your favorite technology stack?",
+        label: t("etc.moreMenu.Projects.WhatIsYourFavoriteTechnologyStack"),
+        link: t("etc.moreMenu.Projects.WhatIsYourFavoriteTechnologyStack"),
         active: false,
-        link: "/chat?question=what-is-your-favorite-technology-stack",
       },
     ],
   },
   {
-    label: "Skills",
-    icon: "icon-[mdi--tools]",
+    label: t("etc.moreMenu.Skills.Label"),
+    icon: "icon-[mdi--star-outline]",
     subMenu: [
       {
-        label: "What's are your skills?",
+        label: t("etc.moreMenu.Skills.WhatAreYourSkills"),
+        link: t("etc.moreMenu.Skills.WhatAreYourSkills"),
         active: true,
-        link: "/chat?question=what-are-your-skills",
       },
       {
-        label: "How was your experience at Bandung?",
+        label: t("etc.moreMenu.Skills.HowWasYourExperienceAtBandung"),
+        link: t("etc.moreMenu.Skills.HowWasYourExperienceAtBandung"),
         active: false,
-        link: "/chat?question=how-was-your-experience-at-bandung",
       },
       {
-        label: "What is your favorite programming language?",
+        label: t("etc.moreMenu.Skills.WhatIsYourFavoriteProgrammingLanguage"),
+        link: t("etc.moreMenu.Skills.WhatIsYourFavoriteProgrammingLanguage"),
         active: false,
-        link: "/chat?question=what-is-your-favorite-programming-language",
       },
       {
-        label: "What is your favorite framework?",
+        label: t("etc.moreMenu.Skills.WhatIsYourFavoriteFramework"),
+        link: t("etc.moreMenu.Skills.WhatIsYourFavoriteFramework"),
         active: false,
-        link: "/chat?question=what-is-your-favorite-framework",
       },
     ],
   },
   {
-    label: "Fun",
+    label: t("etc.moreMenu.FunFact.Label"),
     icon: "icon-[mdi--emoticon-happy-outline]",
     subMenu: [
       {
-        label: "What's your hobbies?",
+        label: t("etc.moreMenu.FunFact.WhatAreYourHobbies"),
+        link: t("etc.moreMenu.FunFact.WhatAreYourHobbies"),
         active: true,
-        link: "/chat?question=what-are-your-hobbies",
       },
       {
-        label: "What's your favorite way to have fun?",
+        label: t("etc.moreMenu.FunFact.WhatIsYourFavoriteWayToHaveFun"),
+        link: t("etc.moreMenu.FunFact.WhatIsYourFavoriteWayToHaveFun"),
         active: false,
-        link: "/chat?question=what-is-your-favorite-way-to-have-fun",
       },
       {
-        label: "What hobbies do you enjoy?",
+        label: t("etc.moreMenu.FunFact.WhatHobbiesDoYouEnjoy"),
+        link: t("etc.moreMenu.FunFact.WhatHobbiesDoYouEnjoy"),
         active: false,
-        link: "/chat?question=what-hobbies-do-you-enjoy",
       },
       {
-        label: "Mac or PC?",
+        label: t("etc.moreMenu.FunFact.MacOrPC"),
+        link: t("etc.moreMenu.FunFact.MacOrPC"),
         active: false,
-        link: "/chat?question=mac-or-pc",
       },
     ],
   },
   {
-    label: "Contact",
+    label: t("etc.moreMenu.Contact.Label"),
     icon: "icon-[mdi--email-outline]",
     subMenu: [
       {
-        label: "How can I reach you?",
+        label: t("etc.moreMenu.Contact.HowCanIReachYou"),
+        link: t("etc.moreMenu.Contact.HowCanIReachYou"),
         active: true,
-        link: "/chat?question=how-can-i-reach-you",
       },
       {
-        label: 'What kind of project would make you say "yes" immediately?',
+        label: t(
+          'etc.moreMenu.Contact.WhatKindOfProjectWouldMakeYouSay"Yes"Immediately'
+        ),
+        link: t(
+          'etc.moreMenu.Contact.WhatKindOfProjectWouldMakeYouSay"Yes"Immediately'
+        ),
         active: false,
-        link: "/chat?question=what-kind-of-project-would-make-you-say-yes-immediately",
       },
       {
-        label: "Where are you located?",
+        label: t("etc.moreMenu.Contact.WhereAreYouLocated"),
+        link: t("etc.moreMenu.Contact.WhereAreYouLocated"),
         active: false,
-        link: "/chat?question=where-are-you-located",
       },
     ],
   },
   {
-    label: "Testimonials",
-    icon: "icon-[mdi--comment-outline]",
+    label: t("etc.moreMenu.Testimonials.Label"),
+    icon: "icon-[mdi--account-star-outline]",
     subMenu: [
       {
-        label: "What do others say about you?",
+        label: t("etc.moreMenu.Testimonials.WhatDoOthersSayAboutYou"),
+        link: t("etc.moreMenu.Testimonials.WhatDoOthersSayAboutYou"),
         active: true,
-        link: "/chat?question=what-do-others-say-about-you",
       },
       {
-        label: "Can you provide references?",
+        label: t("etc.moreMenu.Testimonials.CanYouProvideReferences"),
+        link: t("etc.moreMenu.Testimonials.CanYouProvideReferences"),
         active: false,
-        link: "/chat?question=can-you-provide-references",
       },
       {
-        label: "What are your strengths?",
+        label: t("etc.moreMenu.Testimonials.WhatAreYourStrengths"),
+        link: t("etc.moreMenu.Testimonials.WhatAreYourStrengths"),
         active: false,
-        link: "/chat?question=what-are-your-strengths",
       },
       {
-        label: "What are your weaknesses?",
+        label: t("etc.moreMenu.Testimonials.WhatAreYourWeaknesses"),
+        link: t("etc.moreMenu.Testimonials.WhatAreYourWeaknesses"),
         active: false,
-        link: "/chat?question=what-are-your-weaknesses",
       },
     ],
+  },
+];
+
+export const getQuickMenuList = (t: TFunction) => [
+  {
+    label: t("etc.quickMenu.AboutMe"),
+    icon: "icon-[mdi--information-outline]",
+    link: t("etc.moreMenu.Me.WhoAreYou"),
+  },
+  {
+    label: t("etc.quickMenu.Projects"),
+    icon: "icon-[mdi--folder-outline]",
+    link: t("etc.moreMenu.Projects.WhatProjectsAreYouMostProudOf"),
+  },
+  {
+    label: t("etc.quickMenu.Skills"),
+    icon: "icon-[mdi--star-outline]",
+    link: t("etc.moreMenu.Skills.WhatAreYourSkills"),
+  },
+  {
+    label: t("etc.quickMenu.Fun"),
+    icon: "icon-[mdi--emoticon-happy-outline]",
+    link: t("etc.moreMenu.FunFact.WhatAreYourHobbies"),
+  },
+  {
+    label: t("etc.quickMenu.Contact"),
+    icon: "icon-[mdi--email-outline]",
+    link: t("etc.moreMenu.Contact.HowCanIReachYou"),
+  },
+  {
+    label: t("etc.quickMenu.Testy"),
+    icon: "icon-[mdi--comment-outline]",
+    link: t("etc.moreMenu.Testimonials.WhatDoOthersSayAboutYou"),
   },
 ];
