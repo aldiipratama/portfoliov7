@@ -1,76 +1,21 @@
-"use client";
+import * as React from "react"
 
-import { useState } from "react";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  value: string;
-  className?: string;
+function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  return (
+    <input
+      type={type}
+      data-slot="input"
+      className={cn(
+        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
-const containerVariants = {
-  initial: {},
-  animate: {
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const letterVariants = {
-  initial: {
-    y: 0,
-    color: "inherit",
-  },
-  animate: {
-    y: "-135%",
-    color: "var(--color-zinc-500)",
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 20,
-    },
-  },
-};
-
-export const Input = ({
-  label,
-  className = "",
-  value,
-  ...props
-}: InputProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const showLabel = isFocused || value.length > 0;
-
-  return (
-    <div className={cn("relative", className)}>
-      <motion.div
-        className="absolute top-1/2 -translate-y-1/2 left-4 pointer-events-none text-zinc-900 dark:text-zinc-50"
-        variants={containerVariants}
-        initial="initial"
-        animate={showLabel ? "animate" : "initial"}
-      >
-        {label.split("").map((char, index) => (
-          <motion.span
-            key={index}
-            className="inline-block text-sm"
-            variants={letterVariants}
-            style={{ willChange: "transform" }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
-      </motion.div>
-
-      <input
-        type="text"
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        {...props}
-        className="outline-none px-4 border-2 rounded-full border-zinc-900 dark:border-zinc-50 py-1 w-full text-base font-medium text-zinc-900 dark:text-zinc-50 bg-transparent placeholder-transparent"
-      />
-    </div>
-  );
-};
+export { Input }
