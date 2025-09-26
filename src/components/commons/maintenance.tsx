@@ -41,12 +41,24 @@ export const Maintenance = ({
             </span>
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter>
+        <DialogFooter className="flex-row">
           <DialogClose onClick={() => onOpenChange!(false)} className="sr-only">
             Close
           </DialogClose>
-          <Link href={"mailto:paldi0013@gmail.com"}>
+          <Link
+            href={"mailto:paldi0013@gmail.com"}
+            target="_blank"
+            rel="noreferrer"
+          >
             <Button variant="outline">Hubungi saya</Button>
+          </Link>
+          <Link
+            href={"/CV Muhamad Rinaldi Agus Pratama.pdf"}
+            target="_blank"
+            rel="noreferrer"
+            download="CV - Muhamad Rinaldi Agus Pratama"
+          >
+            <Button>Download CV</Button>
           </Link>
         </DialogFooter>
       </DialogContent>

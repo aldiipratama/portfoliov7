@@ -1,16 +1,25 @@
 "use client";
 
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
-import { PropsWithChildren } from "react";
-import { DiagonalPattern } from "../commons/diagonal-pattern";
-import { Separator } from "../ui/separator";
-import { ModeToggle } from "../commons/mode-toggle";
-import { ChatInput } from "../chat/chat-input";
-import { LookingForTalent } from "../commons/looking-for-talent";
-import { Button } from "../ui/button";
-import { useChatContext } from "../providers/chat-provider";
-import { Trash } from "lucide-react";
+import { Menu, Trash } from "lucide-react";
 import Link from "next/link";
+import { PropsWithChildren, useEffect, useState } from "react";
+import { ChatInput } from "../chat/chat-input";
+import { DiagonalPattern } from "../commons/diagonal-pattern";
+import { LookingForTalent } from "../commons/looking-for-talent";
+import { ModeToggle } from "../commons/mode-toggle";
+import { useChatContext } from "../providers/chat-provider";
+import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 export const PageLayout = ({
   className,
@@ -23,9 +32,15 @@ export const PageLayout = ({
 
 const LayoutPattern = ({
   className,
-  ...props
+  children,
 }: PropsWithChildren & { className?: string }) => {
   const { clearChat } = useChatContext();
+  const isMobile = useMediaQuery("(max-width: 1024px)");
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <div
@@ -65,13 +80,53 @@ const LayoutPattern = ({
         </AsideItem>
       </AsideRight>
 
-      <header className="col-start-2 row-start-1 lg:col-start-4">
-        <div className="flex items-center h-full p-4">
-          <LookingForTalent />
-        </div>
-      </header>
+      {isMounted && isMobile && (
+        <header className="col-start-2 row-start-1 lg:col-start-4">
+          <div className="flex items-center justify-between h-full p-4">
+            <LookingForTalent />
+            <ModeToggle />
+          </div>
+        </header>
+      )}
 
-      <Main className={className} {...props} />
+      <Main className={cn("relative", className)}>
+        {children}
+        {isMounted && isMobile && (
+          <div className="absolute bottom-4 left-4 right-4 flex justify-between">
+            <Drawer>
+              <DrawerTrigger asChild>
+                <Button
+                  variant={"outline"}
+                  className="rounded-full"
+                  size={"sm"}
+                >
+                  <Menu />
+                  <span className="text-xs text-muted-foreground uppercase">
+                    Menu
+                  </span>
+                </Button>
+              </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader>
+                  <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                  <DrawerDescription>
+                    This action cannot be undone.
+                  </DrawerDescription>
+                </DrawerHeader>
+              </DrawerContent>
+            </Drawer>
+
+            <Button
+              variant={"destructive"}
+              onClick={clearChat}
+              size={"sm"}
+              className="rounded-full"
+            >
+              <Trash /> Clear Chat
+            </Button>
+          </div>
+        )}
+      </Main>
 
       <footer className="col-start-2 row-start-7 lg:col-start-4">
         <div className="flex items-center justify-center h-full">

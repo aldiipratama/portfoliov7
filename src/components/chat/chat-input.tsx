@@ -33,7 +33,12 @@ export const ChatInput = () => {
         />
       </PromptInputBody>
       <PromptInputToolbar>
-        <PromptInputTools></PromptInputTools>
+        <PromptInputTools>
+          {/* <Badge variant="secondary" className="text-xs">
+            <Zap />
+            Kredit tersisa: 10
+          </Badge> */}
+        </PromptInputTools>
         <PromptInputSubmit
           disabled={!input.trim() && !status}
           status={status}

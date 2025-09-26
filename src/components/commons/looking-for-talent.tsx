@@ -164,11 +164,20 @@ export const LookingForTalent = () => {
         </div>
 
         <div className="row-start-9 col-start-2 p-4">
-          <DialogFooter>
-            <Link href={"mailto:paldi0013@gmail.com"} target="_blank">
+          <DialogFooter className="flex-row">
+            <Link
+              href={"mailto:paldi0013@gmail.com"}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Button>Hubungi Saya</Button>
             </Link>
-            <Link href={"./cv.pdf"} target="_blank" download>
+            <Link
+              href={"/CV Muhamad Rinaldi Agus Pratama.pdf"}
+              target="_blank"
+              rel="noreferrer"
+              download="CV - Muhamad Rinaldi Agus Pratama"
+            >
               <Button>Download CV</Button>
             </Link>
           </DialogFooter>

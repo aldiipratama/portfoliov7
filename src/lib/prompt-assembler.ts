@@ -10,7 +10,7 @@ export const assemblePrompt = (): string => {
 
   const $ = cheerio.load(promptXml, { xmlMode: true });
   $("age").text(calculateAge("2002-08-01").toString());
-  $("academic_status").text(getAcademicStatus(new Date()));
+  $("current_status").text(getAcademicStatus(new Date()));
 
   return $.xml();
 };
