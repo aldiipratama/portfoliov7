@@ -1,7 +1,6 @@
 "use client";
 
-import { useChatContext } from "@/context/chat-context";
-import { memo, useState } from "react";
+import { useState } from "react";
 import {
   PromptInput,
   PromptInputBody,
@@ -11,21 +10,21 @@ import {
   PromptInputToolbar,
   PromptInputTools,
 } from "../ai-elements/prompt-input";
-import { useChatStore } from "@/stores/chat-store";
+import { useChatContext } from "../providers/chat-provider";
 
-export const ChatInput = memo(function ChatInput() {
+export const ChatInput = () => {
   const [input, setInput] = useState<string>("");
-  const { setShowConversation } = useChatStore();
   const { sendMessage, status } = useChatContext();
 
   const handleSubmit = (message: PromptInputMessage) => {
-    sendMessage({ text: message.text! });
-    setShowConversation(true);
+    if (!message.text) return;
+
+    sendMessage({ text: message.text });
     setInput("");
   };
 
   return (
-    <PromptInput onSubmit={handleSubmit}>
+    <PromptInput onSubmit={handleSubmit} className="border-none">
       <PromptInputBody>
         <PromptInputTextarea
           placeholder="Tanyakan apapun tentang saya..."
@@ -36,10 +35,10 @@ export const ChatInput = memo(function ChatInput() {
       <PromptInputToolbar>
         <PromptInputTools></PromptInputTools>
         <PromptInputSubmit
-          disabled={!input.trim() && status === "streaming"}
+          disabled={!input.trim() && !status}
           status={status}
         />
       </PromptInputToolbar>
     </PromptInput>
   );
-});
+};

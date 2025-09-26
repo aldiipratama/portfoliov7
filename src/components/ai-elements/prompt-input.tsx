@@ -30,6 +30,7 @@ import { nanoid } from "nanoid";
 import {
   type ChangeEventHandler,
   Children,
+  ClipboardEventHandler,
   type ComponentProps,
   createContext,
   type FormEvent,
@@ -434,7 +435,7 @@ export const PromptInput = ({
       />
       <form
         className={cn(
-          "w-full divide-y overflow-hidden bg-background",
+          "w-full divide-y overflow-hidden rounded-xl border bg-background shadow-sm",
           className
         )}
         onSubmit={handleSubmit}
@@ -461,6 +462,8 @@ export const PromptInputTextarea = ({
   placeholder = "What would you like to know?",
   ...props
 }: PromptInputTextareaProps) => {
+  const attachments = usePromptInputAttachments();
+
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     if (e.key === "Enter") {
       // Don't submit if IME composition is in progress
@@ -482,12 +485,36 @@ export const PromptInputTextarea = ({
     }
   };
 
+  const handlePaste: ClipboardEventHandler<HTMLTextAreaElement> = (event) => {
+    const items = event.clipboardData?.items;
+    
+    if (!items) {
+      return;
+    }
+
+    const files: File[] = [];
+    
+    for (const item of items) {
+      if (item.kind === "file") {
+        const file = item.getAsFile();
+        if (file) {
+          files.push(file);
+        }
+      }
+    }
+
+    if (files.length > 0) {
+      event.preventDefault();
+      attachments.add(files);
+    }
+  };
+
   return (
     <Textarea
       className={cn(
         "w-full resize-none rounded-none border-none p-3 shadow-none outline-none ring-0",
         "field-sizing-content bg-transparent dark:bg-transparent",
-        "max-h-20 min-h-20",
+        "max-h-48 min-h-16",
         "focus-visible:ring-0",
         className
       )}
@@ -496,6 +523,7 @@ export const PromptInputTextarea = ({
         onChange?.(e);
       }}
       onKeyDown={handleKeyDown}
+      onPaste={handlePaste}
       placeholder={placeholder}
       {...props}
     />
@@ -539,7 +567,7 @@ export const PromptInputButton = ({
   ...props
 }: PromptInputButtonProps) => {
   const newSize =
-    size ?? Children.count(props.children) > 1 ? "default" : "icon";
+    (size ?? Children.count(props.children) > 1) ? "default" : "icon";
 
   return (
     <Button

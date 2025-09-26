@@ -1,139 +1,86 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { memo, PropsWithChildren } from "react";
-import { ChatInput } from "../chat/chat-input";
+import { PropsWithChildren } from "react";
 import { DiagonalPattern } from "../commons/diagonal-pattern";
-import { LookingForTalent } from "../commons/looking-for-talent";
-import { ModeToggle } from "../commons/mode-toggle";
-import { ThemeSelector } from "../commons/theme-selector";
 import { Separator } from "../ui/separator";
-import { Footer } from "./footer";
-import { Header } from "./header";
-import { Navigation } from "./navigation";
+import { ModeToggle } from "../commons/mode-toggle";
+import { ChatInput } from "../chat/chat-input";
+import { LookingForTalent } from "../commons/looking-for-talent";
+import { Button } from "../ui/button";
+import { useChatContext } from "../providers/chat-provider";
+import { Trash } from "lucide-react";
 
-export const PageLayout = memo(function PageLayout({
-  children,
+export const PageLayout = ({
   className,
-}: PropsWithChildren & { className?: string }) {
+  ...props
+}: PropsWithChildren & {
+  className?: string;
+}) => {
+  return <LayoutPattern className={className} {...props} />;
+};
+
+const LayoutPattern = ({
+  className,
+  ...props
+}: PropsWithChildren & { className?: string }) => {
+  const { clearChat } = useChatContext();
+
   return (
-    <LayoutPattern className={className}>
+    <div
+      className={cn(
+        "grid grid-rows-[60px_1px_minmax(0,1fr)_1px_min-content_1px_40px] w-screen h-screen overflow-hidden",
+        "grid-cols-[20px_minmax(0,_1fr)_20px]", // mobile
+        "lg:grid-cols-[20px_minmax(auto,250px)_20px_minmax(0,1fr)_20px_minmax(auto,250px)_20px]" // desktop
+      )}
+    >
       <DiagonalLayout />
       <SeparatorLayout />
 
       <AsideLeft>
-        <AsideItem side="left" className="flex items-center justify-center">
-          <LookingForTalent />
+        <AsideItem row={1} side="left">
+          <div className="flex items-center justify-center">
+            <LookingForTalent />
+          </div>
         </AsideItem>
         <AsideItem row={2} side="left">
-          <Navigation />
+          <div className="flex flex-col justify-end py-4">
+            <Button
+              variant={"destructive"}
+              onClick={clearChat}
+              className="w-full justify-between"
+            >
+              Clear Chat
+              <Trash />
+            </Button>
+          </div>
         </AsideItem>
       </AsideLeft>
+      <AsideRight>
+        <AsideItem row={1} side="right">
+          <div className="flex items-center justify-center">
+            <ModeToggle />
+          </div>
+        </AsideItem>
+      </AsideRight>
 
-      <Header />
+      <header className="col-start-2 row-start-1 lg:col-start-4">
+        <div className="flex items-center h-full p-4">
+          <LookingForTalent />
+        </div>
+      </header>
 
-      {children}
+      <Main className={className} {...props} />
 
       <div className="col-start-2 row-start-5 lg:col-start-4">
         <ChatInput />
       </div>
-
-      <Footer />
-
-      <AsideRight>
-        <AsideItem side="right">
-          <div className="flex items-center justify-center h-full gap-2">
-            <ModeToggle />
-            <ThemeSelector />
-          </div>
-        </AsideItem>
-      </AsideRight>
-    </LayoutPattern>
+    </div>
   );
-});
+};
+LayoutPattern.displayName = "LayoutPattern";
 
-const AsideLeft = memo(function AsideLeft({
-  className,
-  ...props
-}: PropsWithChildren & { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "hidden lg:grid grid-rows-subgrid row-start-1 row-span-7 col-start-2",
-        className
-      )}
-      {...props}
-    />
-  );
-});
-
-const AsideRight = memo(function AsideRight({
-  className,
-  ...props
-}: PropsWithChildren & { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "hidden lg:grid grid-rows-subgrid row-start-1 row-span-7 col-start-6",
-        className
-      )}
-      {...props}
-    />
-  );
-});
-
-export const Main = memo(function Main({
-  className,
-  ...props
-}: PropsWithChildren & { className?: string }) {
-  return (
-    <main
-      className={cn(
-        "row-start-3 col-start-2 lg:col-start-4 overflow-hidden",
-        className
-      )}
-      {...props}
-    />
-  );
-});
-Main.displayName = "Main";
-
-const AsideItem = memo(function AsideItem({
-  className,
-  row = 1,
-  side,
-  ...props
-}: PropsWithChildren & {
-  className?: string;
-  row?: number;
-  side: "left" | "right";
-}) {
-  const rowStart =
-    ["row-start-1", "row-start-3", "row-start-5", "row-start-7"][row - 1] ||
-    "row-start-1";
-  return <div className={cn(rowStart, className)} {...props} />;
-});
-
-const LayoutPattern = memo(function LayoutPattern({
-  className,
-  ...props
-}: PropsWithChildren & {
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "grid grid-rows-[60px_1px_minmax(0,1fr)_1px_130px_1px_40px] w-screen h-screen overflow-hidden",
-        "grid-cols-[20px_minmax(0,_1fr)_20px]", // mobile
-        "lg:grid-cols-[20px_minmax(auto,250px)_20px_minmax(0,1fr)_20px_minmax(auto,250px)_20px]", // desktop
-        className
-      )}
-      {...props}
-    />
-  );
-});
-
-const DiagonalLayout = memo(function DiagonalLayout() {
+const DiagonalLayout = () => {
   return (
     <>
       <div className={cn("row-start-1 row-span-7 col-start-1")}>
@@ -150,9 +97,10 @@ const DiagonalLayout = memo(function DiagonalLayout() {
       </div>
     </>
   );
-});
+};
+DiagonalLayout.displayName = "DiagonalLayout";
 
-const SeparatorLayout = memo(function SeparatorLayout() {
+const SeparatorLayout = () => {
   return (
     <>
       <div className={cn("col-start-1 col-span-7 row-start-2")}>
@@ -166,4 +114,70 @@ const SeparatorLayout = memo(function SeparatorLayout() {
       </div>
     </>
   );
-});
+};
+SeparatorLayout.displayName = "SeparatorLayout";
+
+const AsideLeft = ({
+  className,
+  ...props
+}: PropsWithChildren & { className?: string }) => {
+  return (
+    <aside
+      className={cn(
+        "hidden lg:grid grid-rows-subgrid row-start-1 row-span-7 col-start-2 px-4",
+        className
+      )}
+      {...props}
+    />
+  );
+};
+AsideLeft.displayName = "AsideLeft";
+
+const AsideRight = ({
+  className,
+  ...props
+}: PropsWithChildren & { className?: string }) => {
+  return (
+    <aside
+      className={cn(
+        "hidden lg:grid grid-rows-subgrid row-start-1 row-span-7 col-start-6 px-4",
+        className
+      )}
+      {...props}
+    />
+  );
+};
+AsideRight.displayName = "AsideRight";
+
+const AsideItem = ({
+  className,
+  row = 1,
+  side,
+  ...props
+}: PropsWithChildren & {
+  className?: string;
+  row?: number;
+  side: "left" | "right";
+}) => {
+  const rowStart =
+    ["row-start-1", "row-start-3", "row-start-5", "row-start-7"][row - 1] ||
+    "row-start-1";
+  return <div className={cn("*:h-full", rowStart, className)} {...props} />;
+};
+AsideItem.displayName = "AsideItem";
+
+const Main = ({
+  className,
+  ...props
+}: PropsWithChildren & { className?: string }) => {
+  return (
+    <main
+      className={cn(
+        "row-start-3 col-start-2 lg:col-start-4 overflow-hidden",
+        className
+      )}
+      {...props}
+    />
+  );
+};
+Main.displayName = "Main";

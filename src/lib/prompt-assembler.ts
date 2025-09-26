@@ -1,23 +1,12 @@
 import { readFileSync } from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
-import { HOME_THREAD_ID } from "./navigation-config";
 
-export const assemblePrompt = ({ threadId }: { threadId: string }): string => {
+export const assemblePrompt = (): string => {
   let promptXml = readFileSync(
-    path.join(process.cwd(), "src/tools/prompts/prompt-persona.xml"),
+    path.join(process.cwd(), "src/prompts/prompt-persona.xml"),
     "utf-8"
   );
-
-  if (threadId === HOME_THREAD_ID) {
-    const navigatorRules = readFileSync(
-      path.join(process.cwd(), "src/tools/prompts/navigator-rules.xml"),
-      "utf-8"
-    );
-    promptXml = promptXml.replace("", navigatorRules);
-  } else {
-    promptXml = promptXml.replace("", "");
-  }
 
   const $ = cheerio.load(promptXml, { xmlMode: true });
   $("age").text(calculateAge("2002-08-01").toString());

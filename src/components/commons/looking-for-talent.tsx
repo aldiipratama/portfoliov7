@@ -1,9 +1,9 @@
-import { cn } from "@/lib/utils";
 import { Book, Calendar, MapPin, School } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -12,10 +12,11 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { Separator } from "../ui/separator";
-import { Status, StatusIndicator, StatusLabel } from "../ui/shadcn-io/status";
+import { Status, StatusIndicator, StatusLabel } from "./status";
 import { DiagonalPattern } from "./diagonal-pattern";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { memo } from "react";
+import { ScrollArea } from "../ui/scroll-area";
 
 const talent = [
   {
@@ -40,7 +41,7 @@ const talent = [
   },
 ];
 
-export const LookingForTalent = memo(function LookingForTalent() {
+export const LookingForTalent = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -131,44 +132,48 @@ export const LookingForTalent = memo(function LookingForTalent() {
           </div>
         </div>
 
-        <div className="row-start-7 col-start-2 py-4 pl-4">
-          <DialogDescription className="flex flex-col gap-5 overflow-y-auto max-h-40">
-            <span className="flex flex-col">
-              <span className="text-foreground">
-                Kenapa memeilih jurusan ini?
+        <div className="row-start-7 col-start-2 pl-4">
+          <ScrollArea>
+            <DialogDescription className="flex flex-col gap-5 max-h-40 py-4">
+              <span className="flex flex-col">
+                <span className="text-foreground">
+                  Kenapa memilih jurusan ini?
+                </span>
+                <span className="text-sm font-medium">
+                  Awalnya saya hanya suka utak-atik komputer, tapi akhirnya
+                  benar-benar menikmati dunia pemrograman. Saya memilih Teknik
+                  Informatika agar bisa ngoding sambil santai, eksplorasi
+                  teknologi terbaru, dan mungkin membangun startup sendiri suatu
+                  hari nanti. Saya ingin menjadi bagian dari transformasi
+                  digital yang relevan dengan kehidupan sehari-hari.
+                </span>
               </span>
-              <span className="text-sm font-medium">
-                Awalnya saya hanya suka utak-atik komputer, tapi akhirnya
-                benar-benar menikmati dunia pemrograman. Saya memilih Teknik
-                Informatika agar bisa ngoding sambil santai, eksplorasi
-                teknologi terbaru, dan mungkin membangun startup sendiri suatu
-                hari nanti. Saya ingin menjadi bagian dari transformasi digital
-                yang relevan dengan kehidupan sehari-hari.
+              <span className="flex flex-col">
+                <span className="text-foreground">Tujuan</span>
+                <span className="text-sm font-medium">
+                  Tujuan saya adalah menjadi insinyur perangkat lunak yang
+                  terampil dan berkontribusi pada proyek inovatif yang berdampak
+                  bagi kehidupan banyak orang. Saya ingin terus belajar dan
+                  berkembang di bidang ini, serta nantinya mengambil peran
+                  kepemimpinan untuk membimbing orang lain dan mendorong
+                  perubahan positif.
+                </span>
               </span>
-            </span>
-
-            <span className="flex flex-col">
-              <span className="text-foreground">Tujuan</span>
-              <span className="text-sm font-medium">
-                Tujuan saya adalah menjadi insinyur perangkat lunak yang
-                terampil dan berkontribusi pada proyek inovatif yang berdampak
-                bagi kehidupan banyak orang. Saya ingin terus belajar dan
-                berkembang di bidang ini, serta nantinya mengambil peran
-                kepemimpinan untuk membimbing orang lain dan mendorong perubahan
-                positif.
-              </span>
-            </span>
-          </DialogDescription>
+            </DialogDescription>
+          </ScrollArea>
         </div>
 
         <div className="row-start-9 col-start-2 p-4">
           <DialogFooter>
-            <Button asChild>
-              <Link href={"mailto:paldi0013@gmail.com"}>Hubungi Saya</Link>
-            </Button>
+            <Link href={"mailto:paldi0013@gmail.com"} target="_blank">
+              <Button>Hubungi Saya</Button>
+            </Link>
+            <Link href={"./cv.pdf"} target="_blank" download>
+              <Button>Download CV</Button>
+            </Link>
           </DialogFooter>
         </div>
       </DialogContent>
     </Dialog>
   );
-});
+};

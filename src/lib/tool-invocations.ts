@@ -1,23 +1,25 @@
-import { Tool, tool, ToolSet } from "ai";
+import { generateObject, tool, ToolSet } from "ai";
 import { z } from "zod/v4";
+import { assemblePrompt } from "./prompt-assembler";
 
 const showAboutMeCard = tool({
   description: "Tampilkan kartu ringkasan 'About Me' kepada user.",
   inputSchema: z.object({
-    position: z
-      .string()
-      .describe(
-        "Posisi atau peran profesional saat ini. misal: 'Fullstack Developer'"
-      ),
-    status: z
-      .string()
-      .describe("Status pekerjaan saat ini. misal: 'Bekerja di Company X'"),
-    passion: z
-      .string()
-      .describe("Deskripsi singkat tentang passion di dunia teknologi."),
-    stack: z.string().describe("Daftar teknologi utama yang dikuasai."),
-    achievement: z.string().describe("Pencapaian atau penghargaan penting."),
+    userInput: z.string().describe("Input dari user."),
   }),
+  execute: async ({ userInput }) => {
+    const response = await generateObject({
+      model: "",
+      system: assemblePrompt(),
+      schema: z.object({
+        opening: z.string().describe("Pembuka percakapan yang ramah."),
+        closing: z.string().describe("Penutup percakapan yang mengundang."),
+      }),
+      prompt: userInput,
+    });
+
+    return response.toJsonResponse();
+  },
 });
 
 const showProjectsCard = tool({
@@ -69,10 +71,10 @@ const showTestimonialsCard = tool({
 });
 
 export const tools: ToolSet = {
-  showAboutMeCard,
-  showProjectsCard,
-  showSkillsCard,
-  showContactCard,
-  showFunFactsCard,
-  showTestimonialsCard,
-};
+  // showAboutMeCard,
+  // showProjectsCard,
+  // showSkillsCard,
+  // showContactCard,
+  // showFunFactsCard,
+  // showTestimonialsCard,
+} satisfies ToolSet;

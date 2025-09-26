@@ -45,9 +45,9 @@ export const Maintenance = ({
           <DialogClose onClick={() => onOpenChange!(false)} className="sr-only">
             Close
           </DialogClose>
-          <Button variant="outline">
-            <Link href={"mailto:paldi0013@gmail.com"}>Hubungi saya</Link>
-          </Button>
+          <Link href={"mailto:paldi0013@gmail.com"}>
+            <Button variant="outline">Hubungi saya</Button>
+          </Link>
         </DialogFooter>
       </DialogContent>
     </Dialog>

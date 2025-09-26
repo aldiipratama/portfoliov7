@@ -1,38 +1,43 @@
 "use client";
 
-import { useChat } from "@ai-sdk/react";
-import { ReactNode, useEffect, useRef } from "react";
-import { ChatProvider as ContextProvider } from "@/context/chat-context";
-import { useChatStore } from "@/stores/chat-store";
+import { ChatMessage } from "@/app/api/chat/route";
+import { Chat, useChat, UseChatHelpers } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { createContext, ReactNode, useContext, useState } from "react";
 
-export const ChatProvider = ({ children }: { children: ReactNode }) => {
-  const { activeChatId, chats, updateMessages } = useChatStore();
+interface ChatContextValue extends UseChatHelpers<ChatMessage> {
+  clearChat: () => void;
+}
 
-  const chatHelpers = useChat();
+const ChatContext = createContext<ChatContextValue | null>(null);
 
-  const isHydrated = useRef(false);
+function createChat() {
+  return new Chat<ChatMessage>({
+    transport: new DefaultChatTransport({
+      api: "/api/chat",
+    }),
+  });
+}
 
-  useEffect(() => {
-    const persistedMessages = activeChatId
-      ? chats[activeChatId]?.messages ?? []
-      : [];
+export function ChatProvider({ children }: { children: ReactNode }) {
+  const [chat, setChat] = useState(() => createChat());
+  const chatHelpers = useChat({ chat });
 
-    if (
-      JSON.stringify(chatHelpers.messages) !== JSON.stringify(persistedMessages)
-    ) {
-      console.log(`Syncing Zustand to useChat for thread: ${activeChatId}`);
-      chatHelpers.setMessages(persistedMessages);
-      isHydrated.current = true;
-    }
-  }, [activeChatId]);
+  const clearChat = () => {
+    setChat(createChat());
+  };
 
-  useEffect(() => {
-    if (!activeChatId) return;
-    if (chatHelpers.status === "streaming") return;
-    if (!isHydrated.current) return;
+  return (
+    <ChatContext.Provider value={{ ...chatHelpers, clearChat }}>
+      {children}
+    </ChatContext.Provider>
+  );
+}
 
-    updateMessages(activeChatId, chatHelpers.messages);
-  }, [chatHelpers.status, chatHelpers.messages]);
-
-  return <ContextProvider value={chatHelpers}>{children}</ContextProvider>;
-};
+export function useChatContext() {
+  const context = useContext(ChatContext);
+  if (!context) {
+    throw new Error("useChatContext must be used within a ChatProvider");
+  }
+  return context;
+}
