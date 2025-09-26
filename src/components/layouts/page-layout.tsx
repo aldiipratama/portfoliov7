@@ -10,6 +10,7 @@ import { LookingForTalent } from "../commons/looking-for-talent";
 import { Button } from "../ui/button";
 import { useChatContext } from "../providers/chat-provider";
 import { Trash } from "lucide-react";
+import Link from "next/link";
 
 export const PageLayout = ({
   className,
@@ -71,6 +72,23 @@ const LayoutPattern = ({
       </header>
 
       <Main className={className} {...props} />
+
+      <footer className="col-start-2 row-start-7 lg:col-start-4">
+        <div className="flex items-center justify-center h-full">
+          <p className="text-xs text-center leading-px lg:text-sm text-muted-foreground">
+            Hak cipta&copy; {new Date().getFullYear()} oleh
+            <Link
+              href="https://github.com/aldiipratama"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button variant="link" className="p-0 px-1 text-xs lg:text-sm">
+                Aldi Pratama
+              </Button>
+            </Link>
+          </p>
+        </div>
+      </footer>
 
       <div className="col-start-2 row-start-5 lg:col-start-4">
         <ChatInput />
