@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import "./globals.css";
 import { Metadata } from "next";
 import { ChatProvider } from "@/components/providers/chat-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Aldi Pratama | Portfolio AI",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <ChatProvider>{children}</ChatProvider>
+          <Toaster richColors position="top-center" />
         </ThemeProvider>
       </body>
     </html>
