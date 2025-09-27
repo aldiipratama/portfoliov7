@@ -17,8 +17,9 @@ const IP_RATE_LIMIT_COUNT = 10;
 const IP_RATE_LIMIT_DURATION = 60;
 const VISITOR_DAILY_QUOTA = 50;
 
-export async function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/api/chat")) {
+    console.log("Processing /api/chat request");
     const ip = (request.headers.get("x-forwarded-for") ?? "127.0.0.1")
       .split(",")[0]
       .trim();
