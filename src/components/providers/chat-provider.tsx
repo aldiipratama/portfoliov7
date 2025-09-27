@@ -60,7 +60,15 @@ export function ChatProvider({ children }: PropsWithChildren) {
   const [dailyQuotaLimit, setDailyQuotaLimit] = useState<number | null>(null);
   const [chat, setChat] = useState(() => createChat());
 
-  const chatHelpers = useChat({ chat });
+  const chatHelpers = useChat({
+    chat,
+    onFinish: () => {
+      setRemainingDailyQuota((currentQuota) => {
+        if (currentQuota === null) return null;
+        return Math.max(0, currentQuota - 1);
+      });
+    },
+  });
 
   const userMessageCount = chatHelpers.messages.filter(
     (msg) => msg.role === "user"
