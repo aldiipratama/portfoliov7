@@ -6,7 +6,7 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const VISITOR_DAILY_QUOTA = 50; // Pastikan nilainya sama dengan di middleware
+const VISITOR_DAILY_QUOTA = 50;
 
 export async function GET(request: NextRequest) {
   try {

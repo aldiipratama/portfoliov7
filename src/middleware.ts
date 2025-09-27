@@ -145,7 +145,11 @@ export default async function middleware(request: NextRequest) {
 
       supabase
         .from("rate_limit_logs")
-        .insert({ ip_address: ip, session_id: sessionId })
+        .insert({
+          ip_address: ip,
+          session_id: sessionId,
+          visitor_id: visitorId,
+        })
         .then(({ error }) => {
           if (error) console.error("Failed to log request:", error.message);
         });
